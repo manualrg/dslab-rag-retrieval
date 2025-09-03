@@ -76,5 +76,29 @@ def check_query_qdrant(
         print("-"*30)
 
 
+def truncation(tokenizer, corpus, max_tokens):
+    corpus_trunc = []
+    lst_lens = []
 
-        
+    for text in corpus:
+        text_tkns = tokenizer.encode(text)
+        lst_lens.append(len(text_tkns))
+        corpus_trunc.append(
+            text_tkns[:max_tokens]
+        )
+
+    se_stats = pd.Series(lst_lens)
+    print(f"Input corpus tokens statistics: {se_stats.describe()}")
+    return corpus_trunc
+
+
+CHUNK_CONTEXT_PROMPT = """
+Aquí está el fragmento que queremos situar dentro de todo el documento
+<chunk>
+{chunk_content}
+</chunk>
+
+Por favor, proporciona un contexto breve y conciso para situar este fragmento dentro del documento en general con el fin de mejorar la recuperación de búsqueda del fragmento.
+
+Responde solo con el contexto conciso y nada más.
+"""
