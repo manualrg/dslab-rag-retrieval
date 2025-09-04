@@ -2,8 +2,7 @@
 
 # Pre Requisites
 
-This environment has been tested in Win11 with Py 3.10
-
+(You may already have it install it in your base Python)
 Install Virtualenv package:
 ```bash
 pip install virtualenv
@@ -11,7 +10,7 @@ pip install virtualenv
 
 Create a virtual environment
 ```bash
-python venv .venv
+python -m venv .venv
 ```
 
 Activate the Virtual Environment,
@@ -21,8 +20,10 @@ for example, with Win/Powershell: `.\.venv\Scripts\activate`
 
 Install dependencies
 ```bash
-pip install requirements.txt
+pip install -r requirements.txt
 ```
+
+This virtual environment has been built using Win11 and Python 3.10.9, 3.11  
 
 As project is based in notebooks, three popular approaches can be followed:
 * Install jupyter notebook: `pip install jupyter`
@@ -50,7 +51,3 @@ In your terminal:
 1. Check that HF auth library is working: `hf --help`
 2. Generate a HF token [User access tokens](https://huggingface.co/docs/hub/security-tokens)
 3. Use the library to loggin: `hf auth login` and insert the token when prompted 
-
-Then access
-
-
