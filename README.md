@@ -2,12 +2,6 @@
 
 # Pre Requisites
 
-(You may already have it install it in your base Python)
-Install Virtualenv package:
-```bash
-pip install virtualenv
-```
-
 Create a virtual environment
 ```bash
 python -m venv .venv
