@@ -25,6 +25,11 @@ As project is based in notebooks, three popular approaches can be followed:
 * Use VSCode notebooks extension: [Jupyter Notebooks in VS Code](https://code.visualstudio.com/docs/datascience/jupyter-notebooks) 
 and install ipykernel with `pip install ipykernel`
 
+Download `docling` models (if not automatically done):
+```bash
+docling-tools models download
+```
+The model artifacts are downloaded by default in `$HOME/.cache/docling/models
 
 ## Enviroment Variables
 Create a `.env` file and populate the following environment variables:
@@ -66,7 +71,8 @@ Add the following cell to your current notebook to install dependencies
 import os, sys
 if "COLAB_" in "".join(os.environ.keys()):
   print(f"Running in colab")
-  !pip install docling==2.43.0 docling-core[chunking-openai]==2.43.0 mistralai==1.9.10 langchain-text-splitters==0.3.11 langchain-docling==1.0.0 langchain-experimental==0.3.4 
+  !!pip install docling==2.43.0 mistralai==1.9.10 qdrant-client==1.15.1 fastembed==0.7.3 faiss-cpu==1.12.0 langchain-text-splitters==0.3.11
+  !pip install  docling-core[chunking-openai]==2.43.0 mistralai==1.9.10  langchain-docling==1.0.0 langchain-experimental==0.3.4 
 else:                                                                                                                                                                                     
     print(f"Running in {sys.executable}")
 ```
